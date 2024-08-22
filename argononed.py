@@ -218,6 +218,7 @@ def display_loop(readq):
     timespan = 1
     prevData = argonsysinfo_diskusage()
     prevTime = time.clock_gettime_ns(time.CLOCK_MONOTONIC)
+    logInfo('screenenabled: {0}'.format(screenenabled))
 
     while len(screenenabled) > 0:
         if len(curlist) == 0 and screenjogflag == 1:
@@ -231,6 +232,7 @@ def display_loop(readq):
                 screenid = 0
         prevscreen = curscreen
         curscreen = screenenabled[screenid]
+        logInfo('curscreen: {0}'.format(curscreen))
 
         if screenjogtime == 0:
             # Resets jogflag (if switched manually)
@@ -609,6 +611,9 @@ if len(sys.argv) > 1:
             t2.start()
             if OLED_ENABLED == True:
                 t3.start()
+                print('OLED is enabled. display_loop started.')
+            else:
+                print('OLED is not enabled.')
             ipcq.join()
         except:
             GPIO.cleanup()

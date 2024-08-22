@@ -8,15 +8,21 @@ DATE_FORMAT='%b %d %y %H:%M:%S'
 #
 def enableLogging( enableDebug : bool = False ):
     if enableDebug:
-        logging.basicConfig( filename=LOGGING_FILE,
-                             filemode='a',
-                             level=logging.DEBUG,
+#        logging.basicConfig( filename=LOGGING_FILE,
+#                             filemode='a',
+#                             level=logging.DEBUG,
+#                             format=FORMAT_STRING,
+#                             datefmt=DATE_FORMAT)
+        logging.basicConfig( level=logging.DEBUG,
                              format=FORMAT_STRING,
                              datefmt=DATE_FORMAT)
     else:
-        logging.basicConfig( filename=LOGGING_FILE,
-                             filemode='a',
-                             level=logging.INFO,
+#        logging.basicConfig( filename=LOGGING_FILE,
+#                             filemode='a',
+#                             level=logging.INFO,
+#                             format=FORMAT_STRING,
+#                             datefmt=DATE_FORMAT)
+        logging.basicConfig( level=logging.INFO,
                              format=FORMAT_STRING,
                              datefmt=DATE_FORMAT)
 
